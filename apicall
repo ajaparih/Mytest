@@ -1,0 +1,20 @@
+import requests
+from urllib import quote
+import sys
+import time
+import select
+import re
+fd = open(r'opt.txt','w')
+old_stdout = sys.stdout
+sys.stdout = fd
+ip_add_file = open(r'IPnet.txt','r')
+requests.packages.urllib3.disable_warnings() # Disable SSL warnings in requests #
+for ipaddress in ip_add_file:
+        requests.packages.urllib3.disable_warnings() # Disable SSL warnings in requests #
+        url = "https://xxxx".format(quote(ipaddress))
+        response = requests.request("GET", url, auth=('username', 'passowrd'), verify=False)
+        print(response.text)
+
+#response = requests.request("GET", url, auth=('username', 'Password'), verify=False)
+#print(response.text)
+fd.close()
