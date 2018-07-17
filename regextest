@@ -1,0 +1,9 @@
+import re,sys
+fd = open(r'opt.txt','w')
+old_stdout = sys.stdout
+sys.stdout = fd
+f = open('/root/fileeck.txt', 'r')
+lines=f.read()
+match = re.findall('at\s*(\S*)', lines)
+print match
+fd.close()
